@@ -12,7 +12,7 @@ import { AppComponent } from './app.component';
 import { OrdenComponent } from './orden/orden.component';
 import { TipoordenComponent } from './orden/tipoorden/tipoorden.component';
 import { EmpleadoComponent } from './orden/empleado/empleado.component';
-import { FormeditarComponent } from './orden/formeditar/formeditar.component';
+import { FormeditarComponent } from './orden/formeditar.component';
 
 const routes:Routes=[
   { path:'', redirectTo:'/orden', pathMatch:'full'},
@@ -26,7 +26,8 @@ const routes:Routes=[
     AppComponent,
     OrdenComponent,
     TipoordenComponent,
-    EmpleadoComponent
+    EmpleadoComponent,
+    FormeditarComponent
   ],
   imports: [
     BrowserModule,

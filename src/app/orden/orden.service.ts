@@ -8,13 +8,13 @@ import { Orden } from './orden';
 })
 export class OrdenService {
 
-  private url:string="http://localhost:8080/orden/getAll";
+  private url:string="http://localhost:8080/orden";
   
   constructor( private http:HttpClient) { }
 
   //obtener ordenes
   getAll():Observable<Orden[]>{
-    return this.http.get<Orden[]>(this.url);
+    return this.http.get<Orden[]>(this.url+'/getAll');
   }
 
   //crear nueva orden
@@ -24,12 +24,12 @@ export class OrdenService {
 
   //obtener una orden
   getOne(id:number):Observable<Orden>{
-    return this.http.get<Orden>(this.url+'/'+id);
+    return this.http.get<Orden>(this.url+'/Orden/'+id);
   }
 
   //actualizar orden
   update(orden:Orden):Observable<Orden>{
-    return this.http.put<Orden>(this.url, orden);
+    return this.http.put<Orden>(this.url+'/update/', orden);
   }
 
   //eliminar orden
