@@ -9,8 +9,6 @@ import { Orden } from './orden';
 export class OrdenService {
 
   private url:string="http://localhost:8080/orden/getAll";
-  private urlE:string="http://localhost:8080/empleado/";
-  private urlTO:string="http://localhost:8080/"
   
   constructor( private http:HttpClient) { }
 
