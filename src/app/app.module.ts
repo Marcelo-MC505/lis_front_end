@@ -10,15 +10,16 @@ import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { OrdenComponent } from './orden/orden.component';
-import { TipoordenComponent } from './orden/tipoorden/tipoorden.component';
-import { EmpleadoComponent } from './orden/empleado/empleado.component';
-import { FormeditarComponent } from './orden/formeditar.component';
+import { TipoordenComponent } from './tipoorden/tipoorden.component';
+import { EmpleadoComponent } from './empleado/empleado.component';
+import { FormnuevaComponent } from './orden/formnueva.component';
+import { PacienteComponent } from './paciente/paciente.component';
+import { TiposervicioComponent } from './tiposervicio/tiposervicio.component';
 
 const routes:Routes=[
   { path:'', redirectTo:'/orden', pathMatch:'full'},
   { path:'orden', component:OrdenComponent},
-  { path:'orden/formeditar', component:FormeditarComponent},
-  { path:'orden/formeditar/:id', component:FormeditarComponent}
+  { path:'orden/formnueva', component:FormnuevaComponent}
 ]
 
 @NgModule({
@@ -27,7 +28,9 @@ const routes:Routes=[
     OrdenComponent,
     TipoordenComponent,
     EmpleadoComponent,
-    FormeditarComponent
+    FormnuevaComponent,
+    PacienteComponent,
+    TiposervicioComponent,
   ],
   imports: [
     BrowserModule,

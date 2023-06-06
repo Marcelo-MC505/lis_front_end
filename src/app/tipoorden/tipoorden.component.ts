@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { TipoOrden } from '../tipo-orden';
-import { TipoOrdenService } from '../tipo-orden.service';
+import { TipoOrden } from '../orden/tipo-orden';
+import { TipoOrdenService } from '../orden/tipo-orden.service';
 
 @Component({
   selector: 'app-tipoorden',
@@ -8,13 +8,13 @@ import { TipoOrdenService } from '../tipo-orden.service';
   styleUrls: ['./tipoorden.component.css']
 })
 export class TipoordenComponent {
-  tipoordenes: TipoOrden[] = [];
+  tipoorden: TipoOrden[] = [];
 
   constructor(private tipoordenService:TipoOrdenService) { }
 
-  ngOnInit(): void{
+  ngOnInit(): void {
     this.tipoordenService.getAll().subscribe(
-      to => this.tipoordenes=to
-    )
+      to => this.tipoorden = to
+    );
   }
 }

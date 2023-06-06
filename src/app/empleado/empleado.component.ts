@@ -1,6 +1,6 @@
-import { Component, Input } from '@angular/core';
-import { Empleado } from '../empleado';
-import { EmpleadoService } from '../empleado.service';
+import { Component } from '@angular/core';
+import { Empleado } from '../orden/empleado';
+import { EmpleadoService } from '../orden/empleado.service';
 
 @Component({
   selector: 'app-empleado',
@@ -14,8 +14,7 @@ export class EmpleadoComponent {
 
   ngOnInit(): void {
     this.empleadoService.getAll().subscribe(
-      e => this.empleados=e
-    )
+      e => this.empleados = e
+    );
   }
-
 }

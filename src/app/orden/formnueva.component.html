@@ -1,0 +1,66 @@
+<div class="container">
+    <div class="card-body">
+        <h5 class="card-title">{{titulo}}</h5>
+        <form>
+            <div class="form-group row">
+                <label for="No. de Orden" class="col-form-label col-sm-2">No. de Orden</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" name="no de orden" [(ngModel)]="ordenng.numeroOrden">
+                </div>
+            </div>
+            <label for="user" class="control-label">Usuario</label>
+            <select class="form-control" id="user" formControlName="usuario">
+                <option *ngFor="let Usuario of usuarios" [value]="Usuario.idUsuario">{{getUsuarioLogin(Usuario.idUsuario)}}</option>
+            </select>
+            <label for="empleado" class="control-label">Empleado</label>
+            <select class="form-control" id="empleado" formControlName="empleado">
+                <option *ngFor="let Empleado of empleados" [value]="Empleado.idEmpleado">{{getEmpleadoNombre(Empleado.idEmpleado)}}</option>
+            </select>
+            <label for="paciente" class="control-label">Paciente</label>
+            <select class="form-control" id="paciente" formControlName="paciente">
+                <option *ngFor="let Paciente of pacientes" [value]="Paciente.idPaciente">{{getPacienteNombre(Paciente.idPaciente)}}</option>
+            </select>
+            <label for="tiposervicio" class="control-label">Tipo de Servicio</label>
+            <select class="form-control" id="tiposervicio" formControlName="tiposervicio">
+                <option *ngFor="let tiposervicio of tiposervicios" [value]="tiposervicio.idTipoServicio">{{getTipoServicioDescripcion(tiposervicio.idTipoServicio)}}</option>
+            </select>
+            <label for="tipoorden" class="control-label">Tipo de Orden</label>
+            <select class="form-control" id="tipoorden" formControlName="tipoorden">
+                <option *ngFor="let tipoorden of tipoordenes" [value]="tipoorden.idTipoOrden">{{getTipoOrdenDescripcion(tipoorden.idTipoOrden)}}</option>
+            </select>
+            <div class="form-group row">
+                <label for="No. de Orden" class="col-form-label col-sm-2">Asistencia</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" name="asistencia" [(ngModel)]="ordenng.asistencia">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="No. de Orden" class="col-form-label col-sm-2">Observaciones</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" name="observaciones" [(ngModel)]="ordenng.observaciones">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="No. de Orden" class="col-form-label col-sm-2">Activo</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" name="activo" [(ngModel)]="ordenng.activo">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="No. de Orden" class="col-form-label col-sm-2">Finalizado</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" name="finalizado" [(ngModel)]="ordenng.finalizado">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="No. de Orden" class="col-form-label col-sm-2">Fecha</label>
+                <div class="col-sm-6">
+                    <input type="date" name="fechacita" class="form-control" name="no de orden" [(ngModel)]="ordenng.fechaCita">
+                </div>
+            </div>
+
+            <button class="btn btn-success" role="button" (click)='create()'>Registrar</button>
+
+        </form>
+    </div>
+</div>

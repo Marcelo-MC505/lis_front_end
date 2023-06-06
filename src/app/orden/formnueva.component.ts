@@ -1,29 +1,34 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Orden } from './orden';
 import { OrdenService } from './orden.service';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Empleado } from './empleado';
+import { TipoOrden } from './tipo-orden';
+import { TipoServicio } from './tipo-servicio';
+import { Paciente } from './paciente';
+import { UsuarioImprime } from './usuario-imprime';
 import { EmpleadoService } from './empleado.service';
 import { TipoOrdenService } from './tipo-orden.service';
-import { Empleado } from './empleado';
-import { TipoServicio } from './tipo-servicio';
 import { TipoServicioService } from './tipo-servicio.service';
 import { PacienteService } from './paciente.service';
-import { TipoOrden } from './tipo-orden';
-import { Paciente } from './paciente';
 import { UsuarioimprimeService } from './usuarioimprime.service';
-import { UsuarioImprime } from './usuario-imprime';
 
 @Component({
-  selector: 'app-orden',
-  templateUrl: './orden.component.html',
-  styleUrls: ['./orden.component.css']
+  selector: 'app-formnueva',
+  templateUrl: './formnueva.component.html',
+  styleUrls: ['./formnueva.component.css']
 })
-export class OrdenComponent implements OnInit{
+export class FormnuevaComponent {
+  ordenng: Orden = new Orden();
   ordenes: Orden[] = [];
+  titulo:string = "Registro de orden"
   empleados: Empleado[] = [];
   tipoordenes: TipoOrden[] = [];
   tiposervicios: TipoServicio[] = [];
   pacientes: Paciente[] = [];
-  usuarios: UsuarioImprime[] = [];
+  usuarios: UsuarioImprime[] = [];  
+  selected: string = '';
 
   constructor(
     private ordenService:OrdenService,
@@ -31,8 +36,9 @@ export class OrdenComponent implements OnInit{
     private tipoordenService:TipoOrdenService,
     private tiposervicioService:TipoServicioService,
     private pacienteService:PacienteService,
-    private usuarioImprimeService:UsuarioimprimeService
-    ) { }
+    private usuarioImprimeService:UsuarioimprimeService,
+    private router:Router
+    ) {  }
 
   ngOnInit(): void {
       this.ordenService.getAll().subscribe(
@@ -77,7 +83,8 @@ export class OrdenComponent implements OnInit{
   getPacienteNombre(idPaciente: number): string {
     const paciente = this.pacientes.find(e => e.idPaciente === idPaciente);
     if (paciente) {
-      return paciente.primerNombre + ' ' + paciente.segundoNombre + ' ' + paciente.primerApellido + ' ' + paciente.segundoApellido;
+      return paciente.primerNombre + ' ' + paciente.segundoNombre + ' ' + paciente.primerApellido + ' ' + paciente.segundoApellido 
+      + ' ¿Está embarazada? (N: No, S: Si) -> ' + paciente.emabrazada;
     } else { 
       return '';
     }
@@ -87,4 +94,10 @@ export class OrdenComponent implements OnInit{
     const user = this.usuarios.find(e => e.idUsuario === idUsuarioimprime);
     return user ? user.login : '';
   }
+
+  create(): void {
+    console.log(this.ordenng);
+  }
+
+  
 }

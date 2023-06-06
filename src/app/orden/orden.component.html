@@ -1,27 +1,44 @@
 <div class="container">
 <h1>Lista de ordenes</h1>
 
-<button class="btn btn-info" type="button" [routerLink]="['/orden/formeditar']">Nueva Orden</button>
+<button class="btn btn-info" type="button" [routerLink]="['/orden/formnueva']">Nueva Orden</button>
 
 <table class="table">
     <thead class="thead-dark">
       <tr>
+        <th scope="col">Id Orden</th>
         <th scope="col">No. de Orden</th>
+        <th scope="col">Usuario</th>
         <th scope="col">Empleado</th>
+        <th scope="col">Paciente</th>
+        <th scope="col">Tipo de Servicio</th>
+        <th scope="col">Tipo de orden</th>
         <th scope="col">Asistencia</th>
         <th scope="col">Observaciones</th>
-        <th scope="col">Tipo de Orden</th>
-        <th scope="col">Acciones</th>
+        <th scope="col">Fecha de Orden</th>
+        <th scope="col">Activo</th>
+        <th scope="col">FechaImprime</th>           
+        <th scope="col">Finalizado</th>
+        <th scope="col">Fecha de Cita</th>          
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let Orden of ordenes">
+        <th>{{Orden.idOrden}}</th>
         <th>{{Orden.numeroOrden}}</th>
-        <th>{{Orden.idEmpleado}}</th>
+        <th>{{getUsuarioLogin(Orden.idUsuarioImprime)}}</th>
+        <th>{{getEmpleadoNombre(Orden.idEmpleado)}}</th>
+        <th>{{getPacienteNombre(Orden.idPaciente)}}</th>
+        <th>{{getTipoServicioDescripcion(Orden.idTipoServicio)}}</th>
+        <th>{{getTipoOrdenDescripcion(Orden.idTipoOrden)}}</th>
         <th>{{Orden.asistencia}}</th>
         <th>{{Orden.observaciones}}</th>
-        <th>{{Orden.idTipoOrden}}</th>  
-        <td> <button type="button" name="button" class="btn btn-primary" [routerLink]="['/orden/formeditar', Orden.idOrden]">Editar Orden</button> </td>
+        <th>{{Orden.fechaOrden}}</th>  
+        <th>{{Orden.activo}}</th>
+        <th>{{Orden.fechaImprime}}</th>
+        <th>{{Orden.finalizado}}</th>
+        <th>{{Orden.fechaCita}}</th>        
       </tr>
     </tbody>
   </table>
+  </div>

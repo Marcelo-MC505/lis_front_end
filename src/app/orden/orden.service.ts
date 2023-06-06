@@ -19,21 +19,6 @@ export class OrdenService {
 
   //crear nueva orden
   create(orden:Orden):Observable<Orden>{
-    return this.http.post<Orden>(this.url, orden);
-  }
-
-  //obtener una orden
-  getOne(id:number):Observable<Orden>{
-    return this.http.get<Orden>(this.url+'/Orden/'+id);
-  }
-
-  //actualizar orden
-  update(orden:Orden):Observable<Orden>{
-    return this.http.put<Orden>(this.url+'/update/', orden);
-  }
-
-  //eliminar orden
-  delete(id:number):Observable<Orden>{
-    return this.http.delete<Orden>(this.url+'/'+id);
+    return this.http.post<Orden>(this.url+'/save', orden);
   }
 }
