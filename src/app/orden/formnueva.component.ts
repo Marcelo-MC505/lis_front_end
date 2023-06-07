@@ -23,6 +23,7 @@ export class FormnuevaComponent {
   ordenng: Orden = new Orden();
   ordenes: Orden[] = [];
   titulo:string = "Registro de orden"
+  titulo2:string = "Registro de examen"
   empleados: Empleado[] = [];
   tipoordenes: TipoOrden[] = [];
   tiposervicios: TipoServicio[] = [];
@@ -61,50 +62,11 @@ export class FormnuevaComponent {
       );
   }
 
-  getEmpleadoNombre(idEmpleado: number): string {
-    const empleado = this.empleados.find(e => e.idEmpleado === idEmpleado);
-    if (empleado) {
-      return empleado.primerNombre + ' ' + empleado.segundoNombre + ' ' + empleado.primerApellido + ' ' + empleado.segundoApellido;
-    } else { 
-      return '';
-    }
-  }
-
-  getTipoOrdenDescripcion(idTipoOrden: number): string {
-    const tipoorden = this.tipoordenes.find(e => e.idTipoOrden === idTipoOrden);
-    return tipoorden ? tipoorden.descripcion : '';
-  }
-
-  getTipoServicioDescripcion(idTipoServicio: number): string {
-    const tiposervicio = this.tiposervicios.find(e => e.idTipoServicio === idTipoServicio);
-    return tiposervicio ? tiposervicio.descripcion : '';
-  }
-
-  getPacienteNombre(idPaciente: number): string {
-    const paciente = this.pacientes.find(e => e.idPaciente === idPaciente);
-    if (paciente) {
-      return paciente.primerNombre + ' ' + paciente.segundoNombre + ' ' + paciente.primerApellido + ' ' + paciente.segundoApellido 
-      + ' ¿Está embarazada? (N: No, S: Si) -> ' + paciente.emabrazada;
-    } else { 
-      return '';
-    }
-  }
-
-  getUsuarioLogin(idUsuarioimprime: number): string {
-    const user = this.usuarios.find(e => e.idUsuario === idUsuarioimprime);
-    return user ? user.login : '';
-  }
-
-  
   create(): void {
-    this.isSubmitting = true;
     console.log(this.ordenng);
-    this.ordenService.create(this.ordenng).subscribe(
-      res => {        
-        setTimeout(() => {
-          this.router.navigate(['/orden']);
-        }, 3000);
-      }
-    );
+    
+    //this.ordenService.create(this.ordenng).subscribe(
+      //res => this.router.navigate(['/orden'])        
+    //);
   }
 }
