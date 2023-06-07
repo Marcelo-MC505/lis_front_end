@@ -27,8 +27,8 @@ export class FormnuevaComponent {
   tipoordenes: TipoOrden[] = [];
   tiposervicios: TipoServicio[] = [];
   pacientes: Paciente[] = [];
-  usuarios: UsuarioImprime[] = [];  
-  selected: string = '';
+  usuarios: UsuarioImprime[] = [];
+  isSubmitting: boolean = false;
 
   constructor(
     private ordenService:OrdenService,
@@ -95,9 +95,16 @@ export class FormnuevaComponent {
     return user ? user.login : '';
   }
 
-  create(): void {
-    console.log(this.ordenng);
-  }
-
   
+  create(): void {
+    this.isSubmitting = true;
+    console.log(this.ordenng);
+    this.ordenService.create(this.ordenng).subscribe(
+      res => {        
+        setTimeout(() => {
+          this.router.navigate(['/orden']);
+        }, 3000);
+      }
+    );
+  }
 }
