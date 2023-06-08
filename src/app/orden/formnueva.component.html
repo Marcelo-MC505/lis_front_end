@@ -12,23 +12,23 @@
             </div>
             <label for="user" class="control-label">Usuario</label>
             <select class="form-control" id="user" [(ngModel)]="ordenng.idUsuarioImprime">
-                <option *ngFor="let Usuario of usuarios" [ngValue]="Usuario.idUsuario">{{Usuario.login}}</option>
+                <option *ngFor="let Usuario of usuarios" [value]="Usuario.idUsuario">{{Usuario.login}}</option>
             </select>            
             <label for="empleado" class="control-label">Empleado</label>
             <select class="form-control" id="empleado" [(ngModel)]="ordenng.idEmpleado">
-                <option *ngFor="let Empleado of empleados" name="idEmpleado" [ngValue]="Empleado">{{Empleado.primerNombre+' '+Empleado.segundoNombre+' '+Empleado.primerApellido+' '+Empleado.segundoApellido}}</option>
+                <option *ngFor="let Empleado of empleados" name="idEmpleado" [value]="Empleado.idEmpleado">{{Empleado.primerNombre+' '+Empleado.segundoNombre+' '+Empleado.primerApellido+' '+Empleado.segundoApellido}}</option>
             </select>
             <label for="paciente" class="control-label">Paciente</label>
             <select class="form-control" id="paciente" [(ngModel)]="ordenng.idPaciente">
-                <option *ngFor="let Paciente of pacientes" name="idPaciente" [ngValue]="Paciente">{{Paciente.primerNombre+' '+Paciente.segundoNombre+' '+Paciente.primerApellido+' '+Paciente.segundoApellido+' ¿Está embarazada? ->'+Paciente.emabrazada}}</option>
+                <option *ngFor="let Paciente of pacientes" name="idPaciente" [value]="Paciente.idPaciente">{{Paciente.primerNombre+' '+Paciente.segundoNombre+' '+Paciente.primerApellido+' '+Paciente.segundoApellido+' ¿Está embarazada? ->'+Paciente.emabrazada}}</option>
             </select>
             <label for="tiposervicio" class="control-label">Tipo de Servicio</label>
             <select class="form-control" id="tiposervicio" [(ngModel)]="ordenng.idTipoServicio">
-                <option *ngFor="let tiposervicio of tiposervicios" name="idTipoServicio" [ngValue]="tiposervicio">{{tiposervicio.descripcion}}</option>
+                <option *ngFor="let tiposervicio of tiposervicios" name="idTipoServicio" [value]="tiposervicio.idTipoServicio">{{tiposervicio.descripcion}}</option>
             </select>
             <label for="tipoorden" class="control-label">Tipo de Orden</label>
             <select class="form-control" id="tipoorden" [(ngModel)]="ordenng.idTipoOrden">
-                <option  *ngFor="let tipoorden of tipoordenes" name="idTipoOrden" [ngValue]="tipoorden">{{tipoorden.descripcion}}</option>
+                <option  *ngFor="let tipoorden of tipoordenes" name="idTipoOrden" [value]="tipoorden.idTipoOrden">{{tipoorden.descripcion}}</option>
             </select> 
             
             <div class="form-group row">
@@ -79,11 +79,11 @@
                     <input type="date" name="fechacita" class="form-control" name="fechaReporte" [(ngModel)]="ordenng.fechaPReporte" required>
                 </div>
             </div>
-            <button type="submit" class="btn btn-success" role="button" (click)='create()'>Registrar la orden</button>
+            <button type="submit" class="btn btn-success" role="button" (click)='create()' [routerLink]="['/orden']">Registrar la orden</button>
         </form>
     </div>
 </div>
-<div class="col-sm-6">
+<!-- <div class="col-sm-6">
     <div class="card-body">
       <h5 class="card-title">{{titulo2}}</h5>
       <form>
@@ -144,4 +144,4 @@
         <button type="submit" class="btn btn-success" role="button" (click)='create()' [routerLink]="['/orden']">Registrar examen</button>
     </form>
 </div>
-</div>
+</div> -->

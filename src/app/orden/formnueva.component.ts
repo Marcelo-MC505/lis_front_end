@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Orden } from './orden';
 import { OrdenService } from './orden.service';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, NumberValueAccessor } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Empleado } from './empleado';
 import { TipoOrden } from './tipo-orden';
@@ -23,13 +23,12 @@ export class FormnuevaComponent {
   ordenng: Orden = new Orden();
   ordenes: Orden[] = [];
   titulo:string = "Registro de orden"
-  titulo2:string = "Registro de examen"
+  titulo2:string = "Registro de examen"  
   empleados: Empleado[] = [];
   tipoordenes: TipoOrden[] = [];
   tiposervicios: TipoServicio[] = [];
   pacientes: Paciente[] = [];
   usuarios: UsuarioImprime[] = [];
-  isSubmitting: boolean = false;
 
   constructor(
     private ordenService:OrdenService,
@@ -63,10 +62,15 @@ export class FormnuevaComponent {
   }
 
   create(): void {
+    this.ordenng.idUsuarioImprime = 4;
+    this.ordenng.idEmpleado = 6;
+    this.ordenng.idPaciente = 2;
+    this.ordenng.idTipoServicio = 6;
+    this.ordenng.idTipoOrden = 2;
     console.log(this.ordenng);
     
-    //this.ordenService.create(this.ordenng).subscribe(
-      //res => this.router.navigate(['/orden'])        
-    //);
+    this.ordenService.create(this.ordenng).subscribe(
+      res => this.router.navigate(['/orden'])        
+    );
   }
 }
