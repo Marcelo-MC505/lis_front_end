@@ -62,11 +62,11 @@ export class FormnuevaComponent {
   }
 
   create(): void {
-    this.ordenng.idUsuarioImprime = 4;
-    this.ordenng.idEmpleado = 6;
-    this.ordenng.idPaciente = 2;
-    this.ordenng.idTipoServicio = 6;
-    this.ordenng.idTipoOrden = 2;
+    this.ordenng.idUsuarioImprime = 1;
+    this.ordenng.idEmpleado = 1;
+    this.ordenng.idPaciente = 1;
+    this.ordenng.idTipoServicio = 1;
+    this.ordenng.idTipoOrden = 1;
     console.log(this.ordenng);
     
     this.ordenService.create(this.ordenng).subscribe(
