@@ -9,7 +9,8 @@ import { TipoServicio } from './tipo-servicio';
 export class TipoServicioService {
 
   private url:string="http://localhost:8085/tiposervicio/getAll";
-  
+  idTipoServicio!: number;
+
   constructor( private http:HttpClient) { }
 
   //obtener empleado

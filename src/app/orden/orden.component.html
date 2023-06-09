@@ -6,7 +6,7 @@
   </style>
 </head>
 <body>
-<div class="container">
+<div class="container" style="width:fit-content;">
   <h1>Lista de ordenes</h1>
 
   <button class="btn btn-info btn-new-order" type="button" [routerLink]="['/orden/formnueva']">Nueva Orden</button>
@@ -26,9 +26,9 @@
           <th scope="col">Observaciones</th>
           <th scope="col">Fecha de Orden</th>
           <th scope="col">Activo</th>
-          <th scope="col">FechaImprime</th>           
+          <th scope="col">FechaImprime</th>
           <th scope="col">Finalizado</th>
-          <th scope="col">Fecha de Cita</th>          
+          <th scope="col">Fecha de Cita</th>
         </tr>
       </thead>
       <tbody>
@@ -42,11 +42,11 @@
           <td>{{getTipoOrdenDescripcion(Orden.idTipoOrden)}}</td>
           <td>{{Orden.asistencia}}</td>
           <td>{{Orden.observaciones}}</td>
-          <td>{{Orden.fechaOrden}}</td>  
+          <td>{{Orden.fechaOrden}}</td>
           <td>{{Orden.activo}}</td>
           <td>{{Orden.fechaImprime}}</td>
           <td>{{Orden.finalizado}}</td>
-          <td>{{Orden.fechaCita}}</td>        
+          <td>{{Orden.fechaCita}}</td>
         </tr>
       </tbody>
     </table>

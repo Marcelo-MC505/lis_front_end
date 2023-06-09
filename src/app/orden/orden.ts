@@ -16,4 +16,5 @@ export class Orden {
     finalizado!: string;
     fechaCita!: Date;
     fechaPReporte!: Date;
+  idExamen: any;
 }

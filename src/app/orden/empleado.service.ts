@@ -9,7 +9,8 @@ import { Empleado } from './empleado';
 export class EmpleadoService {
 
   private url:string="http://localhost:8081/empleado/getAll";
-  
+  idEmpleado!: number;
+
   constructor( private http:HttpClient) { }
 
   //obtener empleado

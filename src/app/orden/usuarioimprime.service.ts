@@ -9,9 +9,10 @@ import { Observable } from 'rxjs';
 export class UsuarioimprimeService {
 
   private url:string="http://localhost:8084/usuarioimprime/getAll"
-  
+  idUsuarioImprime!: number;
+
   constructor( private http:HttpClient) { }
-  
+
   //obtener paciente
   getAll():Observable<UsuarioImprime[]>{
     return this.http.get<UsuarioImprime[]>(this.url);

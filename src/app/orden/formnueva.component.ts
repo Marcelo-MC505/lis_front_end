@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Injectable } from '@angular/core';
 import { Orden } from './orden';
 import { OrdenService } from './orden.service';
 import { FormGroup, FormBuilder, NumberValueAccessor } from '@angular/forms';
@@ -13,6 +13,10 @@ import { TipoOrdenService } from './tipo-orden.service';
 import { TipoServicioService } from './tipo-servicio.service';
 import { PacienteService } from './paciente.service';
 import { UsuarioimprimeService } from './usuarioimprime.service';
+import { Examen } from './examen';
+import { ExamenService } from './examen.service';
+import { Detalleorden } from './detalleorden';
+import { DetalleordenService } from './detalleorden.service';
 
 @Component({
   selector: 'app-formnueva',
@@ -23,12 +27,14 @@ export class FormnuevaComponent {
   ordenng: Orden = new Orden();
   ordenes: Orden[] = [];
   titulo:string = "Registro de orden"
-  titulo2:string = "Registro de examen"  
+  titulo2:string = "Registro de detalle"
   empleados: Empleado[] = [];
   tipoordenes: TipoOrden[] = [];
   tiposervicios: TipoServicio[] = [];
   pacientes: Paciente[] = [];
   usuarios: UsuarioImprime[] = [];
+  examenes: Examen[] = [];
+  detalleordenng: Detalleorden = new Detalleorden();
 
   constructor(
     private ordenService:OrdenService,
@@ -37,7 +43,10 @@ export class FormnuevaComponent {
     private tiposervicioService:TipoServicioService,
     private pacienteService:PacienteService,
     private usuarioImprimeService:UsuarioimprimeService,
-    private router:Router
+    private examenService:ExamenService,
+    private detalleordenService:DetalleordenService,
+    private router:Router,
+
     ) {  }
 
   ngOnInit(): void {
@@ -59,18 +68,31 @@ export class FormnuevaComponent {
       this.usuarioImprimeService.getAll().subscribe(
         ui => this.usuarios = ui
       );
+      this.examenService.getAll().subscribe(
+        ex => this.examenes = ex
+      );
   }
 
-  create(): void {
+
+ create(): void {
     this.ordenng.idUsuarioImprime = 1;
     this.ordenng.idEmpleado = 1;
     this.ordenng.idPaciente = 1;
     this.ordenng.idTipoServicio = 1;
     this.ordenng.idTipoOrden = 1;
     console.log(this.ordenng);
-    
+
     this.ordenService.create(this.ordenng).subscribe(
-      res => this.router.navigate(['/orden'])        
+      res => this.router.navigate(['/orden/formnueva'])
+    );
+  }
+
+  createDetalle(): void {
+    this.detalleordenng.idOrden = 1;
+    this.detalleordenng.idExamen = 1;
+    console.log(this.ordenng);
+    this.detalleordenService.create(this.detalleordenng).subscribe(
+      res => this.router.navigate(['/orden'])
     );
   }
 }

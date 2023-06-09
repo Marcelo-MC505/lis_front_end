@@ -1,19 +1,19 @@
 <div class="container">
     <div class="row">
-      <div class="col-sm-6">
+      <div class="col-sm-12">
         <div class="card-body">
           <h5 class="card-title">{{titulo}}</h5>
         <form>
             <div class="form-group row">
-                <label for="No. de Orden" class="col-form-label col-sm-2">No. de Orden</label>
-                <div class="col-sm-6">
+                <label for="No. de Orden" class="col-form-label col-sm-12">No. de Orden</label>
+                <div class="col-sm-12">
                     <input type="text" class="form-control" name="no de orden" [(ngModel)]="ordenng.numeroOrden" required>
                 </div>
             </div>
             <label for="user" class="control-label">Usuario</label>
             <select class="form-control" id="user" [(ngModel)]="ordenng.idUsuarioImprime">
                 <option *ngFor="let Usuario of usuarios" [value]="Usuario.idUsuario">{{Usuario.login}}</option>
-            </select>            
+            </select>
             <label for="empleado" class="control-label">Empleado</label>
             <select class="form-control" id="empleado" [(ngModel)]="ordenng.idEmpleado">
                 <option *ngFor="let Empleado of empleados" name="idEmpleado" [value]="Empleado.idEmpleado">{{Empleado.primerNombre+' '+Empleado.segundoNombre+' '+Empleado.primerApellido+' '+Empleado.segundoApellido}}</option>
@@ -29,119 +29,67 @@
             <label for="tipoorden" class="control-label">Tipo de Orden</label>
             <select class="form-control" id="tipoorden" [(ngModel)]="ordenng.idTipoOrden">
                 <option  *ngFor="let tipoorden of tipoordenes" name="idTipoOrden" [value]="tipoorden.idTipoOrden">{{tipoorden.descripcion}}</option>
-            </select> 
-            
+            </select>
+            <br>
             <div class="form-group row">
-                <label for="No. de Orden" class="col-form-label col-sm-2">Asistencia (S: si, N: no)</label>
+                <label for="No. de Orden" class="col-form-label col-sm-6">Asistencia (S: si, N: no)</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" name="asistencia" [(ngModel)]="ordenng.asistencia" required>
+                    <input type="text" class="form-control" name="asistencia" [(ngModel)]="ordenng.asistencia">
                 </div>
             </div>
             <div class="form-group row">
-                <label for="No. de Orden" class="col-form-label col-sm-2">Observaciones</label>
+                <label for="No. de Orden" class="col-form-label col-sm-6">Observaciones</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" name="observaciones" [(ngModel)]="ordenng.observaciones" required>
+                    <input type="text" class="form-control" name="observaciones" [(ngModel)]="ordenng.observaciones">
                 </div>
             </div>
             <div class="form-group row">
-                <label for="No. de Orden" class="col-form-label col-sm-2">Fecha de Orden</label>
+                <label for="No. de Orden" class="col-form-label col-sm-6">Fecha de Orden</label>
                 <div class="col-sm-6">
                     <input type="date" name="fechacita" class="form-control" name="fechadeorden" [(ngModel)]="ordenng.fechaOrden" required>
                 </div>
             </div>
             <div class="form-group row">
-                <label for="No. de Orden" class="col-form-label col-sm-2">Activo (S: si, N: no)</label>
+                <label for="No. de Orden" class="col-form-label col-sm-6">Activo (S: si, N: no)</label>
                 <div class="col-sm-6">
                     <input type="text" class="form-control" name="activo" [(ngModel)]="ordenng.activo" required>
                 </div>
             </div>
             <div class="form-group row">
-                <label for="No. de Orden" class="col-form-label col-sm-2">Finalizado (S: si, N: no)</label>
+                <label for="No. de Orden" class="col-form-label col-sm-6">Finalizado (S: si, N: no)</label>
                 <div class="col-sm-6">
                     <input type="text" class="form-control" name="finalizado" [(ngModel)]="ordenng.finalizado" required>
                 </div>
             </div>
             <div class="form-group row">
-                <label for="No. de Orden" class="col-form-label col-sm-2">Fecha de Cita</label>
+                <label for="No. de Orden" class="col-form-label col-sm-6">Fecha de Cita</label>
                 <div class="col-sm-6">
-                    <input type="date" name="fechacita" class="form-control" name="fechacita" [(ngModel)]="ordenng.fechaCita" required>
+                    <input type="date" name="fechacita" class="form-control" name="fechacita" [(ngModel)]="ordenng.fechaCita">
                 </div>
             </div>
             <div class="form-group row">
-                <label for="No. de Orden" class="col-form-label col-sm-2">Fecha de Impresion</label>
+                <label for="No. de Orden" class="col-form-label col-sm-6">Fecha de Impresion</label>
                 <div class="col-sm-6">
-                    <input type="date" name="fechacita" class="form-control" name="fechaImprime" [(ngModel)]="ordenng.fechaImprime" required>
+                    <input type="date" name="fechacita" class="form-control" name="fechaImprime" [(ngModel)]="ordenng.fechaImprime">
                 </div>
             </div>
             <div class="form-group row">
-                <label for="No. de Orden" class="col-form-label col-sm-2">Fecha de Reporte</label>
+                <label for="No. de Orden" class="col-form-label col-sm-6">Fecha de Reporte</label>
                 <div class="col-sm-6">
                     <input type="date" name="fechacita" class="form-control" name="fechaReporte" [(ngModel)]="ordenng.fechaPReporte" required>
                 </div>
             </div>
-            <button type="submit" class="btn btn-success" role="button" (click)='create()' [routerLink]="['/orden']">Registrar la orden</button>
+
+            <button id="btnSave" type="submit" class="btn btn-success" role="button" (click)='create()'>Registrar la orden</button>
+            <br>
+            <label for="examen" class="control-label">Examen</label>
+            <select class="form-control" id="examen" [(ngModel)]="ordenng.idExamen">
+                <option *ngFor="let Examen of examenes" name="idExamen" [value]="Examen.idExamen">{{Examen.descripcionCorta}}</option>
+            </select>
+
         </form>
+        <br>
+        <button id="btnSave" type="submit" class="btn btn-success" role="button" (click)='createDetalle()' [routerLink]="['/orden']">Registrar Examen</button>
     </div>
-</div>
-<!-- <div class="col-sm-6">
-    <div class="card-body">
-      <h5 class="card-title">{{titulo2}}</h5>
-      <form>
-        <div class="form-group row">
-            <label for="No. de Orden" class="col-form-label col-sm-2">No. de Orden</label>
-            <div class="col-sm-6">
-                <input type="text" class="form-control" name="no de orden" [(ngModel)]="ordenng.numeroOrden" required>
-            </div>
-        </div>       
-        <div class="form-group row">
-            <label for="No. de Orden" class="col-form-label col-sm-2">Asistencia (S: si, N: no)</label>
-            <div class="col-sm-6">
-                <input type="text" class="form-control" name="asistencia" [(ngModel)]="ordenng.asistencia" required>
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="No. de Orden" class="col-form-label col-sm-2">Observaciones</label>
-            <div class="col-sm-6">
-                <input type="text" class="form-control" name="observaciones" [(ngModel)]="ordenng.observaciones" required>
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="No. de Orden" class="col-form-label col-sm-2">Fecha de Orden</label>
-            <div class="col-sm-6">
-                <input type="date" name="fechacita" class="form-control" name="fechadeorden" [(ngModel)]="ordenng.fechaOrden" required>
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="No. de Orden" class="col-form-label col-sm-2">Activo (S: si, N: no)</label>
-            <div class="col-sm-6">
-                <input type="text" class="form-control" name="activo" [(ngModel)]="ordenng.activo" required>
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="No. de Orden" class="col-form-label col-sm-2">Finalizado (S: si, N: no)</label>
-            <div class="col-sm-6">
-                <input type="text" class="form-control" name="finalizado" [(ngModel)]="ordenng.finalizado" required>
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="No. de Orden" class="col-form-label col-sm-2">Fecha de Cita</label>
-            <div class="col-sm-6">
-                <input type="date" name="fechacita" class="form-control" name="fechacita" [(ngModel)]="ordenng.fechaCita" required>
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="No. de Orden" class="col-form-label col-sm-2">Fecha de Impresion</label>
-            <div class="col-sm-6">
-                <input type="date" name="fechacita" class="form-control" name="fechaImprime" [(ngModel)]="ordenng.fechaImprime" required>
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="No. de Orden" class="col-form-label col-sm-2">Fecha de Reporte</label>
-            <div class="col-sm-6">
-                <input type="date" name="fechacita" class="form-control" name="fechaReporte" [(ngModel)]="ordenng.fechaPReporte" required>
-            </div>
-        </div>
-        <button type="submit" class="btn btn-success" role="button" (click)='create()' [routerLink]="['/orden']">Registrar examen</button>
-    </form>
-</div>
-</div> -->
+  </div>
+

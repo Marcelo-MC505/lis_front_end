@@ -9,7 +9,8 @@ import { Orden } from './orden';
 export class OrdenService {
 
   private url:string="http://localhost:8080/orden";
-  
+  idTipoOrden!: number;
+
   constructor( private http:HttpClient) { }
 
   //obtener ordenes

@@ -11,6 +11,8 @@ import { TipoOrden } from './tipo-orden';
 import { Paciente } from './paciente';
 import { UsuarioimprimeService } from './usuarioimprime.service';
 import { UsuarioImprime } from './usuario-imprime';
+import { Examen } from './examen';
+import { ExamenService } from './examen.service';
 
 @Component({
   selector: 'app-orden',
@@ -24,6 +26,11 @@ export class OrdenComponent implements OnInit{
   tiposervicios: TipoServicio[] = [];
   pacientes: Paciente[] = [];
   usuarios: UsuarioImprime[] = [];
+  examenes: Examen[] = [];
+
+  onInputChange(event: any) {
+    this.ordenes = event.target.orden;
+  }
 
   constructor(
     private ordenService:OrdenService,
@@ -31,7 +38,8 @@ export class OrdenComponent implements OnInit{
     private tipoordenService:TipoOrdenService,
     private tiposervicioService:TipoServicioService,
     private pacienteService:PacienteService,
-    private usuarioImprimeService:UsuarioimprimeService
+    private usuarioImprimeService:UsuarioimprimeService,
+    private examenService:ExamenService
     ) { }
 
   ngOnInit(): void {
@@ -53,13 +61,16 @@ export class OrdenComponent implements OnInit{
       this.usuarioImprimeService.getAll().subscribe(
         ui => this.usuarios = ui
       );
+      this.examenService.getAll().subscribe(
+        ex => this.examenes = ex
+      );
   }
 
   getEmpleadoNombre(idEmpleado: number): string {
     const empleado = this.empleados.find(e => e.idEmpleado === idEmpleado);
     if (empleado) {
       return empleado.primerNombre + ' ' + empleado.segundoNombre + ' ' + empleado.primerApellido + ' ' + empleado.segundoApellido;
-    } else { 
+    } else {
       return '';
     }
   }
@@ -78,9 +89,14 @@ export class OrdenComponent implements OnInit{
     const paciente = this.pacientes.find(e => e.idPaciente === idPaciente);
     if (paciente) {
       return paciente.primerNombre + ' ' + paciente.segundoNombre + ' ' + paciente.primerApellido + ' ' + paciente.segundoApellido;
-    } else { 
+    } else {
       return '';
     }
+  }
+
+  getExamenDescripcion(idExamen: number): string {
+    const examen = this.examenes.find(e => e.idExamen === idExamen);
+    return examen ? examen.descripcionCorta : '';
   }
 
   getUsuarioLogin(idUsuarioimprime: number): string {
